@@ -185,4 +185,53 @@
     body {
         @apply bg-background text-foreground;
     }
+
+    /* Enhanced focus styles for accessibility (WCAG 2.2 AA) */
+    *:focus-visible {
+        outline: 2px solid hsl(0 0% 3.9%);
+        outline-offset: 2px;
+    }
+
+    /* Respect reduced motion preference */
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+            scroll-behavior: auto !important;
+        }
+    }
+
+    /* Ensure smooth scrolling for skip links (when motion is allowed) */
+    @media (prefers-reduced-motion: no-preference) {
+        html {
+            scroll-behavior: smooth;
+        }
+    }
+}
+
+/* Screen reader only utility (already used in SkipLink) */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+.not-sr-only {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
 }
