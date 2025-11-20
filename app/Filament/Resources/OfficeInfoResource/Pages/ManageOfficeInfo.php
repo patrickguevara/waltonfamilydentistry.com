@@ -4,7 +4,6 @@ namespace App\Filament\Resources\OfficeInfoResource\Pages;
 
 use App\Filament\Resources\OfficeInfoResource;
 use App\Models\OfficeInfo;
-use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
 class ManageOfficeInfo extends EditRecord
@@ -16,7 +15,7 @@ class ManageOfficeInfo extends EditRecord
         // Ensure office info record exists
         $officeInfo = OfficeInfo::first();
 
-        if (!$officeInfo) {
+        if (! $officeInfo) {
             $officeInfo = OfficeInfo::create([
                 'practice_name' => 'Walton Family Dentistry',
                 'phone' => '(512) 953-8362',

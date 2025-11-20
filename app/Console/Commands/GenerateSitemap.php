@@ -65,7 +65,7 @@ class GenerateSitemap extends Command
 
         $totalUrls = count($staticPages) + $services->count();
         $this->info("Sitemap generated successfully with {$totalUrls} URLs!");
-        $this->info('Location: ' . public_path('sitemap.xml'));
+        $this->info('Location: '.public_path('sitemap.xml'));
 
         return Command::SUCCESS;
     }

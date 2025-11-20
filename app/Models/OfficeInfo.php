@@ -41,9 +41,9 @@ class OfficeInfo extends Model
     {
         $address = $this->address_line1;
         if ($this->address_line2) {
-            $address .= ', ' . $this->address_line2;
+            $address .= ', '.$this->address_line2;
         }
-        $address .= ', ' . $this->city . ', ' . $this->state . ' ' . $this->zip;
+        $address .= ', '.$this->city.', '.$this->state.' '.$this->zip;
 
         return $address;
     }
