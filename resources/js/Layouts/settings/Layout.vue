@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Heading from '@/components/Heading.vue';
+import Heading from '@/Components/Heading.vue';
 import { Button } from '@/Components/UI/button';
 import { Separator } from '@/Components/UI/separator';
 import { toUrl, urlIsActive } from '@/lib/utils';

@@ -10,7 +10,7 @@ import {
     SidebarMenuItem,
     useSidebar,
 } from '@/Components/UI/sidebar';
-import UserInfo from '@/components/UserInfo.vue';
+import UserInfo from '@/Components/UserInfo.vue';
 import { usePage } from '@inertiajs/vue3';
 import { ChevronsUpDown } from 'lucide-vue-next';
 import UserMenuContent from './UserMenuContent.vue';

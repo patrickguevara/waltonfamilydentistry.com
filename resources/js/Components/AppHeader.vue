@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import AppLogo from '@/components/AppLogo.vue';
-import AppLogoIcon from '@/components/AppLogoIcon.vue';
-import Breadcrumbs from '@/components/Breadcrumbs.vue';
+import AppLogo from '@/Components/AppLogo.vue';
+import AppLogoIcon from '@/Components/AppLogoIcon.vue';
+import Breadcrumbs from '@/Components/Breadcrumbs.vue';
 import { Avatar, AvatarFallback, AvatarImage } from '@/Components/UI/avatar';
 import { Button } from '@/Components/UI/button';
 import {
@@ -28,7 +28,7 @@ import {
     TooltipProvider,
     TooltipTrigger,
 } from '@/Components/UI/tooltip';
-import UserMenuContent from '@/components/UserMenuContent.vue';
+import UserMenuContent from '@/Components/UserMenuContent.vue';
 import { getInitials } from '@/composables/useInitials';
 import { toUrl, urlIsActive } from '@/lib/utils';
 import { dashboard } from '@/routes';

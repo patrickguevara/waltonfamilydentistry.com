@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import AlertError from '@/components/AlertError.vue';
+import AlertError from '@/Components/AlertError.vue';
 import { Button } from '@/Components/UI/button';
 import {
     Card,
