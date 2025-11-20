@@ -123,7 +123,9 @@ php artisan pail               # View logs
 npm run dev                    # Start Vite dev server
 npm run build                  # Build for production
 npm run format                 # Format code with Prettier
+npm run format:check           # Check formatting without fixing
 npm run lint                   # Lint and fix with ESLint
+npm run lint:check             # Lint without fixing
 ```
 
 **Database:**
@@ -164,8 +166,9 @@ app/
 
 resources/
 ├── js/
-│   ├── components/       # Vue components
-│   ├── layouts/         # Page layouts
+│   ├── Components/       # Vue components (capital C!)
+│   │   └── UI/          # UI primitives (capital UI!)
+│   ├── Layouts/         # Page layouts (capital L!)
 │   ├── pages/           # Inertia pages
 │   └── composables/     # Vue composables
 └── views/               # Blade templates
@@ -181,6 +184,8 @@ routes/
 
 docs/                   # Project documentation
 ```
+
+**Important:** Components, Layouts, and UI directories use capital case for Linux CI compatibility.
 
 ## Key Models
 
@@ -226,8 +231,26 @@ npm run format             # JS/Vue/CSS
    php artisan view:cache
    ```
 
+## Contributing
+
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our development workflow and how to submit pull requests.
+
+**Quick overview:**
+1. Create a feature branch: `git checkout -b feature/your-feature`
+2. Make changes and test locally
+3. Run quality checks: `./vendor/bin/pint --test && npm run format:check && npm run lint:check`
+4. Run tests: `composer test`
+5. Verify build: `npm run build`
+6. Push and create a PR to `main`
+7. Wait for GitHub Actions to pass
+8. Get approval and merge
+
+All changes must go through pull requests - no direct pushes to `main`.
+
 ## Documentation
 
+- [CONTRIBUTING.md](CONTRIBUTING.md) - Development workflow and contribution guidelines
+- [CLAUDE.md](CLAUDE.md) - Detailed project context for AI assistants
 - [Implementation Status](docs/IMPLEMENTATION_STATUS.md) - Current progress and completed features
 - [Accessibility](docs/ACCESSIBILITY.md) - WCAG 2.2 AA compliance documentation
 

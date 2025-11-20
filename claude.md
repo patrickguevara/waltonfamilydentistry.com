@@ -41,11 +41,14 @@ app/
 └── Policies/               # Authorization (UserPolicy)
 
 resources/js/
-├── components/             # Reusable Vue components
-├── composables/            # useAccessibility, useReducedMotion, etc.
-├── layouts/               # App, auth, settings layouts
+├── Components/             # Reusable Vue components (capital C!)
+│   └── UI/                # UI primitives (capital UI!)
+├── composables/           # useAccessibility, useReducedMotion, etc.
+├── Layouts/               # App, auth, settings layouts (capital L!)
 └── pages/                 # Inertia pages (Home, About, Services, Contact)
 ```
+
+**Note:** Capital case for Components/, Layouts/, and UI/ is critical for Linux CI compatibility.
 
 ## Core Models
 
@@ -100,11 +103,23 @@ Route::post('/contact', [ContactController::class, 'store'])
 
 ## Frontend Conventions
 
-### Component Naming
-- UI primitives in `components/ui/` (Button, Input, Card, etc.)
-- App components in `components/` (Header, Footer, AppLayout, etc.)
+### Component Naming and Import Paths
+- UI primitives in `Components/UI/` (Button, Input, Card, etc.)
+- App components in `Components/` (Header, Footer, AppLayout, etc.)
+- Layouts in `Layouts/` (AppLayout, AuthLayout, etc.)
 - Use PascalCase for component names
 - Prefer composition over props drilling
+
+**CRITICAL - Import Path Case Sensitivity:**
+- macOS is case-insensitive, but Linux CI is case-sensitive
+- Git tracks files with their original case
+- Always use capital case in imports to match Git-tracked paths:
+  - ✅ `@/Components/Header.vue` (capital C)
+  - ✅ `@/Components/UI/button` (capital C, capital UI)
+  - ✅ `@/Layouts/AppLayout.vue` (capital L)
+  - ❌ `@/components/Header.vue` (lowercase - fails on CI)
+  - ❌ `@/components/ui/button` (lowercase - fails on CI)
+  - ❌ `@/layouts/AppLayout.vue` (lowercase - fails on CI)
 
 ### Accessibility
 - All interactive elements must have 44x44px touch targets (app uses 48px minimum)
@@ -191,30 +206,78 @@ php artisan db:seed                 # Seed only
 - Don't use `any` in TypeScript
 - Don't forget to invalidate cache when updating models
 - Don't use hardcoded URLs - use `route()` helper
+- **Don't push directly to `main`** - always use feature branches and PRs
+- **Don't skip local testing** - run linters/tests before pushing
+- **Don't use lowercase import paths** - always match Git-tracked case
 
 ## Development Workflow
 
-1. **Making changes:**
+### Branch-Based Development (REQUIRED)
+
+**All new features and changes must use feature branches:**
+
+1. **Create a feature branch:**
+   ```bash
+   git checkout -b feature/descriptive-name
+   # or
+   git checkout -b fix/bug-description
+   ```
+
+2. **Make changes:**
    - Backend: Edit PHP, auto-reloads with `php artisan serve`
    - Frontend: Edit Vue/TS, HMR with `npm run dev`
    - Styles: Edit Tailwind classes, HMR enabled
 
-2. **Testing changes:**
+3. **Test locally:**
    - Manual: Visit http://waltonfamilydentistry.com.test
    - Admin: Visit http://waltonfamilydentistry.com.test/admin
-   - Automated: `composer test` (when tests exist)
+   - Automated: `composer test`
 
-3. **Checking code quality:**
+4. **Run linters and tests locally (REQUIRED before push):**
    ```bash
-   ./vendor/bin/pint    # Fix PHP formatting
-   npm run format       # Fix JS/Vue formatting
-   npm run lint         # Fix linting issues
+   ./vendor/bin/pint --test    # Check PHP formatting (must pass)
+   npm run format:check        # Check JS/Vue formatting (must pass)
+   npm run lint:check          # Lint JS/Vue (must pass)
+   composer test               # Run PHP tests (must pass)
+   npm run build               # Verify build succeeds (must pass)
    ```
 
-4. **Database changes:**
-   - Create migration: `php artisan make:migration`
-   - Run migration: `php artisan migrate`
-   - Rollback: `php artisan migrate:rollback`
+5. **Commit changes:**
+   ```bash
+   git add .
+   git commit -m "feat: descriptive commit message"
+   ```
+
+6. **Push branch and create PR:**
+   ```bash
+   git push -u origin feature/descriptive-name
+   # Then create PR on GitHub targeting `main`
+   ```
+
+7. **GitHub Actions will run:**
+   - Linter workflow (PHP + JS/Vue)
+   - Tests workflow (Pest tests + build)
+   - Both must pass before merge
+
+8. **After PR approval:**
+   - Merge to `main` via GitHub
+   - Delete feature branch
+
+### Pre-Push Checklist
+
+Before pushing any branch, verify:
+- [ ] All linters pass: `./vendor/bin/pint --test && npm run format:check && npm run lint:check`
+- [ ] All tests pass: `composer test`
+- [ ] Build succeeds: `npm run build`
+- [ ] Import paths use correct case (@/Components/, @/Layouts/)
+- [ ] No `any` types in TypeScript
+- [ ] Accessibility standards maintained (WCAG 2.2 AA)
+
+### Database Changes
+
+- Create migration: `php artisan make:migration`
+- Run migration: `php artisan migrate`
+- Rollback: `php artisan migrate:rollback`
 
 ## Admin Credentials
 
@@ -227,7 +290,9 @@ php artisan db:seed                 # Seed only
 - **Controllers:** `app/Http/Controllers/`
 - **Filament Resources:** `app/Filament/Resources/`
 - **Vue Pages:** `resources/js/pages/`
-- **Vue Components:** `resources/js/components/`
+- **Vue Components:** `resources/js/Components/` (capital C!)
+- **UI Components:** `resources/js/Components/UI/` (capital UI!)
+- **Layouts:** `resources/js/Layouts/` (capital L!)
 - **Composables:** `resources/js/composables/`
 - **Routes:** `routes/web.php`, `routes/settings.php`
 - **Migrations:** `database/migrations/`
