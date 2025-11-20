@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TextLink from '@/Components/TextLink.vue';
-import { Button } from '@/components/ui/button';
-import { Spinner } from '@/components/ui/spinner';
+import { Button } from '@/Components/UI/button';
+import { Spinner } from '@/Components/UI/spinner';
 import AuthLayout from '@/Layouts/AuthLayout.vue';
 import { logout } from '@/routes';
 import { send } from '@/routes/verification';

@@ -14,7 +14,6 @@ export default defineConfigWithVueTs(
             'bootstrap/ssr',
             'tailwind.config.js',
             'resources/js/Components/UI/**/*',
-            'resources/js/components/ui/**/*',
         ],
     },
     {

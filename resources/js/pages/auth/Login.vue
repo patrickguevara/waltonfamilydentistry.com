@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
 import TextLink from '@/Components/TextLink.vue';
-import { Button } from '@/components/ui/button';
-import { Checkbox } from '@/components/ui/checkbox';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Spinner } from '@/components/ui/spinner';
+import { Button } from '@/Components/UI/button';
+import { Checkbox } from '@/Components/UI/checkbox';
+import { Input } from '@/Components/UI/input';
+import { Label } from '@/Components/UI/label';
+import { Spinner } from '@/Components/UI/spinner';
 import AuthBase from '@/Layouts/AuthLayout.vue';
 import { register } from '@/routes';
 import { store } from '@/routes/login';

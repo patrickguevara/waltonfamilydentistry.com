@@ -2,8 +2,8 @@
 import HeadingSmall from '@/Components/HeadingSmall.vue';
 import TwoFactorRecoveryCodes from '@/Components/TwoFactorRecoveryCodes.vue';
 import TwoFactorSetupModal from '@/Components/TwoFactorSetupModal.vue';
-import { Badge } from '@/components/ui/badge';
-import { Button } from '@/components/ui/button';
+import { Badge } from '@/Components/UI/badge';
+import { Button } from '@/Components/UI/button';
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth';
 import AppLayout from '@/Layouts/AppLayout.vue';
 import SettingsLayout from '@/Layouts/settings/Layout.vue';

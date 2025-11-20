@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import InputError from '@/Components/InputError.vue';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
+import { Button } from '@/Components/UI/button';
+import { Input } from '@/Components/UI/input';
 import {
     PinInput,
     PinInputGroup,
     PinInputSlot,
-} from '@/components/ui/pin-input';
+} from '@/Components/UI/pin-input';
 import AuthLayout from '@/Layouts/AuthLayout.vue';
 import { store } from '@/routes/two-factor/login';
 import { Form, Head } from '@inertiajs/vue3';

@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import AlertError from '@/components/AlertError.vue';
 import InputError from '@/components/InputError.vue';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/Components/UI/button';
 import {
     Dialog,
     DialogContent,
     DialogDescription,
     DialogHeader,
     DialogTitle,
-} from '@/components/ui/dialog';
+} from '@/Components/UI/dialog';
 import {
     PinInput,
     PinInputGroup,
     PinInputSlot,
-} from '@/components/ui/pin-input';
-import { Spinner } from '@/components/ui/spinner';
+} from '@/Components/UI/pin-input';
+import { Spinner } from '@/Components/UI/spinner';
 import { useTwoFactorAuth } from '@/composables/useTwoFactorAuth';
 import { confirm } from '@/routes/two-factor';
 import { Form } from '@inertiajs/vue3';
